@@ -5,36 +5,36 @@ Sub Nouvelle_Affaire()
     Dim Copy_Folder
 
 
-Afficher_UserForm_N蚊ffaire:
-    Load N起Affaire
-    N起Affaire.Show
+Afficher_UserForm_N簞Affaire:
+    Load N簞_Affaire
+    N簞_Affaire.Show
     If Fin = 1 Then GoTo Fin:
-    New_N_Affaire = N起Affaire.N起Affaire_Case.Value
+    New_N_Affaire = N簞_Affaire.N簞_Affaire_Case.Value
 
-Cr嶪r_Nom:
-    Nom = N起Affaire.N起Affaire_Case.Value
-    If N起Affaire.N起Real_Case.Value <> "" Then Nom = Nom & "-" & N起Affaire.N起Real_Case.Value
-    If N起Affaire.Nbr_dIdrapal_Case.Value <> "" Then Nom = Nom & "-" & N起Affaire.Nbr_dIdrapal_Case.Value
+Cr矇er_Nom:
+    Nom = N簞_Affaire.N簞_Affaire_Case.Value
+    If N簞_Affaire.N簞_Real_Case.Value <> "" Then Nom = Nom & "-" & N簞_Affaire.N簞_Real_Case.Value
+    If N簞_Affaire.Nbr_dIdrapal_Case.Value <> "" Then Nom = Nom & "-" & N簞_Affaire.Nbr_dIdrapal_Case.Value
     Nom = Nom & " IDRAPAL"
-    If N起Affaire.Client_Case.Value <> "" Then Nom = Nom & "-" & N起Affaire.Client_Case.Value
-    If N起Affaire.Client鉤Case.Value <> "" Then Nom = Nom & "-" & N起Affaire.Client鉤Case.Value
-    If N起Affaire.Ville_Case.Value <> "" Then Nom = Nom & "-" & N起Affaire.Ville_Case.Value
-    If N起Affaire.Pays_Case.Value <> "" Then Nom = Nom & "-" & N起Affaire.Pays_Case.Value
+    If N簞_Affaire.Client_Case.Value <> "" Then Nom = Nom & "-" & N簞_Affaire.Client_Case.Value
+    If N簞_Affaire.Client繒_Case.Value <> "" Then Nom = Nom & "-" & N簞_Affaire.Client繒_Case.Value
+    If N簞_Affaire.Ville_Case.Value <> "" Then Nom = Nom & "-" & N簞_Affaire.Ville_Case.Value
+    If N簞_Affaire.Pays_Case.Value <> "" Then Nom = Nom & "-" & N簞_Affaire.Pays_Case.Value
 
-V廨ifier_Existance_Dossier:
+V矇rifier_Existance_Dossier:
     If Dir("\\192.168.0.15\idra-service\Tiers\##IDRAPAL##\IDRAPAL\" & Nom, vbDirectory) <> "" Then
-    Nom_Existant = MsgBox("Le dossier " & Nom & " existe d嶴a." & Chr(10) & "Voulez-vous recommencer ?", vbRetryCancel + vbCritical + vbDefaultButton1, "Nom Existant")
+    Nom_Existant = MsgBox("Le dossier " & Nom & " existe d矇ja." & Chr(10) & "Voulez-vous recommencer ?", vbRetryCancel + vbCritical + vbDefaultButton1, "Nom Existant")
     If Nom_Existant = vbCancel Then GoTo Fin:
-    If Nom_Existant = vbRetry Then GoTo Afficher_UserForm_N蚊ffaire:
+    If Nom_Existant = vbRetry Then GoTo Afficher_UserForm_N簞Affaire:
     End If
 
-Cr嶧tion_du_Dossier:
+Cr矇ation_du_Dossier:
     Set Copy_Folder = CreateObject("Scripting.FileSystemObject")
-    Copy_Folder.CopyFolder "\\192.168.0.15\idra-service\Tiers\##IDRAPAL##\IDRAPAL\AF-IDRAPAL", "\\192.168.0.15\idra-service\Tiers\##IDRAPAL##\IDRAPAL\" & Nom, False
+    Copy_Folder.CopyFolder "\\192.168.0.15\idra-service\Tiers\##IDRAPAL##\IDRAPAL\AF-IDRAPAL", "\\192.168.0.15\idra-service\Tiers\##IDRAPAL##\IDRAPAL\" & Nom, False 'R矇pertoire �� changer
     Shell Environ("WINDIR") & "\explorer.exe " & "\\192.168.0.15\idra-service\Tiers\##IDRAPAL##\IDRAPAL\" & Nom & "\", vbNormalFocus
 
 Fin:
-    Unload N起Affaire
+    Unload N簞_Affaire
     Set Fin = Nothing
     End Sub
 
